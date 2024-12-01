@@ -1,4 +1,4 @@
-//
+// Auth Controller
 import { User } from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { generateTokenAndCookie } from "../utils/generateToken.js";
