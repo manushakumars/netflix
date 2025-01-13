@@ -7,11 +7,11 @@ const Footer = () => {
             <p className="text-balance text-center text-sm leading-loose text-muted-foreground md:text-left">
                 Built by{" "}
                 <a
-                   href=''
+                   href='https://www.linkedin.com/in/anusha-malladi-284222316/'
                    target='_blank'
                    className="font-medium underline underline-offset-4"
                 >
-                    you
+                    Anusha
                 </a>
                 . The source code is available on - {" "}
                 <a
