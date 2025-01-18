@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuthStore } from "../store/authUser";
 
 const SignupPage = () => {
   const { searchParams } = new URL(document.location);
@@ -13,7 +14,7 @@ const SignupPage = () => {
 
   const handleSignUp = (e) => {
      e.preventDefault();
-     console.log(email, username, password);
+     signup({ email, username, password });
   }
   return (
     <div className='h-screen w-full hero-bg'>
@@ -49,7 +50,7 @@ const SignupPage = () => {
                 </label>
                 <input type='text'
                   className="w-full px-3 py-2 mt-1 border border-gray-700 rounded-md bg-transparent text-white focus:outline-none focus:ring"
-                  placeholder="abcdefg"
+                  placeholder='anusha'
                   id="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
