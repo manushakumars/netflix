@@ -1,7 +1,10 @@
 import axios from "axios";
 import { create } from "zustand";
 import toast from "react-hot-toast";
-//import { authCheck } from "../../../backend/controllers/auth.controller";
+
+// Configure Axios
+axios.defaults.baseURL = "http://localhost:5173"; // Replace with your actual base URL
+axios.defaults.withCredentials = true; // If using cookies for authentication
 
 export const useAuthStore = create((set) => ({
   user: null,
@@ -9,6 +12,7 @@ export const useAuthStore = create((set) => ({
   isCheckingAuth: true,
   isLoggingOut: false,
   isLoggingIn: false,
+
   signup: async (credentials) => {
     set({ isSigningUp: true });
     try {
@@ -16,20 +20,23 @@ export const useAuthStore = create((set) => ({
       set({ user: response.data.user, isSigningUp: false });
       toast.success("Account created successfully");
     } catch (error) {
-      toast.error(error.response.data.message || "Signup failed");
-      Set({ isSigningUp: false, user: null });
+      toast.error(error.response?.data?.message || "Signup failed");
+      set({ isSigningUp: false, user: null }); 
     }
   },
+
   login: async (credentials) => {
     set({ isLoggingIn: true });
     try {
       const response = await axios.post("/api/v1/auth/login", credentials);
       set({ user: response.data.user, isLoggingIn: false });
+      toast.success("Logged in successfully");
     } catch (error) {
       set({ isLoggingIn: false, user: null });
-      toast.error(error.response.data.message || "Login failed");
+      toast.error(error.response?.data?.message || "Login failed");
     }
   },
+
   logout: async () => {
     set({ isLoggingOut: true });
     try {
@@ -38,9 +45,10 @@ export const useAuthStore = create((set) => ({
       toast.success("Logged out successfully");
     } catch (error) {
       set({ isLoggingOut: false });
-      toast.error(error.response.data.message || "Logout failed");
+      toast.error(error.response?.data?.message || "Logout failed");
     }
   },
+
   authCheck: async () => {
     set({ isCheckingAuth: true });
     try {
@@ -48,9 +56,7 @@ export const useAuthStore = create((set) => ({
       set({ user: response.data.user, isCheckingAuth: false });
     } catch (error) {
       toast.error(error.response?.data?.message || "An error occurred");
-      set({ isSigningUp: false, user: null }); 
-      
+      set({ isCheckingAuth: false, user: null }); 
     }
-    
   },
 }));
