@@ -9,12 +9,12 @@ import { useEffect } from "react";
 import { Loader } from "lucide-react";
 
 function App() {
-  const { user, isCheckingAuth, authCkeck } = useAuthStore();
+  const { user, isCheckingAuth, authCheck } = useAuthStore();
   console.log("auth user is here:", user);
 
   useEffect(() => {
-     authCkeck();
-  }, [authCkeck]);
+     authCheck();
+  }, [authCheck]);
 
 if (isCheckingAuth) {
   return (
@@ -36,7 +36,7 @@ if (isCheckingAuth) {
       <Route path='/login' element={!user ? <LoginPage/> : <Navigate to={"/"} />} />
       
       {/* Route to Signup -> "./pages/SignupPage" */}
-      <Route path='/Signup' element={!user ? <SignupPage/> : <Navigate to={"/"} /> } />
+      <Route path='/signup' element={!user ? <SignupPage/> : <Navigate to={"/"} /> } />
     
     </Routes>
     
