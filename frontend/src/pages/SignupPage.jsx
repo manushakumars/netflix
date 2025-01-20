@@ -10,7 +10,7 @@ const SignupPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { signup} = useAuthStore();
+  const { signup } = useAuthStore();
 
   const handleSignUp = (e) => {
      e.preventDefault();
@@ -83,7 +83,7 @@ const SignupPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default SignupPage;
