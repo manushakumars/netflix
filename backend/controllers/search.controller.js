@@ -14,7 +14,7 @@ export async function searchPerson(req, res) {
 
     await User.findByIdAndUpdate(req.user._id, {
       $push: {
-        serachHistory: {
+        searchHistory: {
           id: response.results[0].id,
           image: response.results[0].profile_path,
           title: response.results[0].name,
@@ -25,7 +25,7 @@ export async function searchPerson(req, res) {
     });
     res.status(200).json({ success: true, content: response.results });
   } catch (error) {
-    console.log("Error in serachPerson controller: ", error.message);
+    console.log("Error in searchPerson controller: ", error.message);
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }
@@ -43,7 +43,7 @@ export async function searchMovie(req, res) {
 
     await User.findByIdAndUpdate(req.user._id, {
       $push: {
-        serachHistory: {
+        searchHistory: {
           id: response.results[0].id,
           image: response.results[0].poster_path,
           title: response.results[0].title,
@@ -71,7 +71,7 @@ export async function searchTv(req, res) {
     }
     await User.findByIdAndUpdate(req.user._id, {
       $push: {
-        serachHistory: {
+        searchHistory: {
           id: response.results[0].id,
           image: response.results[0].poster_path,
           title: response.results[0].name,
@@ -82,14 +82,14 @@ export async function searchTv(req, res) {
     });
     res.status(200).json({ success: true, content: response.results });
   } catch (error) {
-    console.log("Error in serachMovie controller: ", error.message);
+    console.log("Error in searchMovie controller: ", error.message);
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }
 
 export async function getsearchHistory(req, res) {
   try {
-    res.status(200).json({ success: true, content: req.user.serachHistory });
+    res.status(200).json({ success: true, content: req.user.searchHistory });
   } catch (error) {
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
@@ -102,7 +102,7 @@ export async function removeItemFromSearchHistory(req, res) {
   try {
     await User.findByIdAndUpdate(req.user._id, {
       $pull: {
-        serachHistory: { id: id }
+        searchHistory: { id: id }
       }
     });
     res
