@@ -3,7 +3,7 @@ import { create } from "zustand";
 import toast from "react-hot-toast";
 
 // Configure Axios
-axios.defaults.baseURL = "http://localhost:5173"; // Replace with your actual base URL
+axios.defaults.baseURL = "/"; // Replace with your actual base URL
 axios.defaults.withCredentials = true; // If using cookies for authentication
 
 export const useAuthStore = create((set) => ({
