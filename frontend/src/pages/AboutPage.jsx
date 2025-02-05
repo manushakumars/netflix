@@ -17,7 +17,7 @@ const About = () => {
         <h2 className="font-semibold">Terms and Conditions:</h2>
         <p>Please review our terms and conditions for more details.</p>
         <h2 className="font-semibold">Help Desk:</h2>
-        <p>For support, please contact us at support@example.com.</p>
+        <p>For support, please contact us at about@example.com.</p>
       </div>
     );
   };
