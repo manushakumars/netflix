@@ -11,6 +11,7 @@ import WatchPage from "./pages/WatchPage";
 import SearchPage from "./pages/SearchPage";
 import SearchHistoryPage from "./pages/SearchHistoryPage";
 import NotFoundPage from "./pages/404";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   const { user, isCheckingAuth, authCheck } = useAuthStore();
@@ -50,8 +51,12 @@ if (isCheckingAuth) {
 
        {/* Route to SearchHistoryPage -> "./pages/SearchHistoryPage" */}
        <Route path='/history' element={user ? <SearchHistoryPage/> : <Navigate to={"/login"} /> } />
-
+      
+       {/* Route to 404 page -> "./pages/404" */}
        <Route path='/*' element={<NotFoundPage /> } />
+
+        {/* Route to About page -> "./pages/AboutPage" */}
+        <Route path='/about' element={<AboutPage /> } />
     
     </Routes>
     
